@@ -1,6 +1,7 @@
 import express from "express";
 
 import { authenticate } from "../../middleware/auth.middleware.js";
+import { validate } from "../../middleware/validate.middleware.js";
 
 import {
   createOrder,
@@ -8,11 +9,17 @@ import {
   getOrderById,
 } from "./order.controller.js";
 
+import { createOrderSchema } from "./order.validator.js";
+
 const router = express.Router();
 
 router.use(authenticate);
 
-router.post("/", createOrder);
+router.post(
+  "/",
+  validate(createOrderSchema),
+  createOrder
+);
 
 router.get("/", getOrders);
 
