@@ -2,6 +2,8 @@ import express from "express";
 import cors from "cors";
 
 import authRoutes from "./modules/auth/auth.route.js";
+import productRoutes from "./modules/product/product.route.js";
+import { errorHandler } from "./middleware/error.middleware.js";
 const app = express();
 
 // CORS
@@ -19,5 +21,9 @@ app.get("/health", (req, res) => {
 });
 
 app.use("/api/auth", authRoutes);
+app.use("/api/products", productRoutes);
+
+
+app.use(errorHandler);
 
 export default app;
