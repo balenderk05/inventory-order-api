@@ -21,10 +21,9 @@ app.get("/health", (req, res) => {
   });
 });
 
-app.use("/api/auth", authRoutes);
-app.use("/api/products", productRoutes);
-app.use("/api/orders", orderRoutes);
-
+app.use("/v1/api/auth", authRoutes);
+app.use("/v1/api/products", productRoutes);
+app.use("/v1/api/orders", orderRoutes);
 
 app.use(errorHandler);
 
