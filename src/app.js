@@ -4,6 +4,7 @@ import cors from "cors";
 import authRoutes from "./modules/auth/auth.route.js";
 import productRoutes from "./modules/product/product.route.js";
 import { errorHandler } from "./middleware/error.middleware.js";
+import orderRoutes from "./modules/order/order.route.js";
 const app = express();
 
 // CORS
@@ -22,6 +23,7 @@ app.get("/health", (req, res) => {
 
 app.use("/api/auth", authRoutes);
 app.use("/api/products", productRoutes);
+app.use("/api/orders", orderRoutes);
 
 
 app.use(errorHandler);
